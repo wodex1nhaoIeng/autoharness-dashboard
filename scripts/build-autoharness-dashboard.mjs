@@ -32,6 +32,9 @@ function increment(map, key) {
 function skipCategory(reason) {
   if (reason.startsWith("Missing Arbitrary implementation")) return "Missing Arbitrary";
   if (reason.startsWith("Generic Function: no candidate type")) return "Generic: no candidate type";
+  if (reason.startsWith("Generic Function: generic instantiation search reached the limit")) return "Generic: search limit reached";
+  if (reason.startsWith("Generic Function: the function has a `const {}` block")) return "Const block on a const generic";
+  if (reason.startsWith("Can only be called at compile time")) return "Compile-time only";
   if (reason.startsWith("Generic Function: non-usize const generic")) return "Non-usize const generic";
   if (reason.startsWith("Requires --bounded-arguments")) return "Requires bounded arguments";
   if (reason.includes("does not have a body")) return "No function body";
