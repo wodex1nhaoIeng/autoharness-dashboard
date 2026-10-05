@@ -1,93 +1,108 @@
 {
-  "generatedAt": "2026-09-17",
+  "generatedAt": "2026-10-05",
   "meta": {
     "title": "Rust standard library autoharness baseline",
-    "kaniCommit": "02abb5b0d",
-    "kaniVersion": "0.67.0",
-    "verifyRustStdBranch": "sync-2026-08-21",
+    "kaniCommit": "2ce7725a0",
+    "kaniVersion": "0.68.0",
+    "verifyRustStdBranch": "verify-rust-std #687 (the library synced to nightly-2026-09-25, a4e1cd0c212)",
     "target": "x86_64-unknown-linux-gnu"
   },
   "summary": {
-    "automaticHarnesses": 26975,
-    "skipped": 14258,
-    "candidateFunctions": 41233,
-    "coverage": 0.654209007348483
+    "automaticHarnesses": 27119,
+    "skipped": 14357,
+    "candidateFunctions": 41476,
+    "coverage": 0.6538480084868358
   },
   "crates": [
     {
       "name": "core",
-      "selected": 19337,
-      "skipped": 5772,
-      "total": 25109,
-      "coverage": 0.7701222669162452
+      "selected": 19760,
+      "skipped": 5598,
+      "total": 25358,
+      "coverage": 0.7792412650839972
     },
     {
       "name": "alloc",
-      "selected": 1124,
-      "skipped": 1839,
-      "total": 2963,
-      "coverage": 0.37934525818427267
+      "selected": 565,
+      "skipped": 2413,
+      "total": 2978,
+      "coverage": 0.18972464741437206
     },
     {
       "name": "std",
-      "selected": 1254,
-      "skipped": 2541,
-      "total": 3795,
-      "coverage": 0.33043478260869563
+      "selected": 1704,
+      "skipped": 2097,
+      "total": 3801,
+      "coverage": 0.4483030781373323
     },
     {
       "name": "dependencies",
-      "selected": 5260,
-      "skipped": 4106,
-      "total": 9366,
-      "coverage": 0.5616058082425796
+      "selected": 5090,
+      "skipped": 4249,
+      "total": 9339,
+      "coverage": 0.5450262340721704
     }
   ],
   "skipReasons": [
     {
       "reason": "Missing Arbitrary",
-      "count": 6869,
-      "share": 0.4817646233693365
+      "count": 6625,
+      "share": 0.46144737758584664
     },
     {
       "reason": "Generic: no candidate type",
-      "count": 4511,
-      "share": 0.3163837845420115
+      "count": 3741,
+      "share": 0.2605697569130041
     },
     {
       "reason": "Non-usize const generic",
       "count": 1581,
-      "share": 0.11088511712722682
+      "share": 0.11012049871142997
     },
     {
       "reason": "Requires bounded arguments",
-      "count": 1102,
-      "share": 0.07728994248842755
+      "count": 1379,
+      "share": 0.09605070697220867
+    },
+    {
+      "reason": "Generic: search limit reached",
+      "count": 687,
+      "share": 0.04785122240022289
     },
     {
       "reason": "No function body",
-      "count": 195,
-      "share": 0.013676532472997615
+      "count": 178,
+      "share": 0.012398133314759351
+    },
+    {
+      "reason": "Const block on a const generic",
+      "count": 118,
+      "share": 0.008218987253604513
+    },
+    {
+      "reason": "Compile-time only",
+      "count": 48,
+      "share": 0.00334331684892387
     }
   ],
   "legacyComparison": [
     {
       "name": "core",
       "previous": 12834,
-      "current": 19337,
-      "change": 0.5067009505999689
+      "current": 19760,
+      "change": 0.5396602773881876
     },
     {
       "name": "alloc",
       "previous": 138,
-      "current": 1124,
-      "change": 7.144927536231885
+      "current": 565,
+      "change": 3.0942028985507246
     },
     {
       "name": "std",
       "previous": 1259,
-      "current": 1254,
-      "change": -0.003971405877680745
+      "current": 1704,
+      "change": 0.3534551231135823
     }
   ],
   "improvementComparison": [
@@ -115,10 +130,16 @@
     "total": 2093,
     "rows": [
       {
+        "pr": 4802,
+        "title": "the seven other formatting traits",
+        "harnesses": 116,
+        "note": "measured with #4802 alone"
+      },
+      {
         "pr": 4824,
         "title": "`&Formatter` / `&mut Formatter` arguments",
-        "harnesses": 147,
-        "note": null
+        "harnesses": 69,
+        "note": "functions #4802 alone does not generate"
       },
       {
         "pr": 4806,
@@ -133,12 +154,6 @@
         "note": null
       },
       {
-        "pr": 4802,
-        "title": "the seven other formatting traits",
-        "harnesses": 38,
-        "note": null
-      },
-      {
         "pr": 4809,
         "title": "`&Wtf8` arguments",
         "harnesses": 37,
@@ -146,14 +161,14 @@
       },
       {
         "pr": null,
-        "title": "functions needing two of the five above",
-        "harnesses": 1,
+        "title": "functions needing one of the five above and #4780",
+        "harnesses": 17,
         "note": null
       },
       {
         "pr": null,
-        "title": "functions needing one of the five above and #4780",
-        "harnesses": 17,
+        "title": "functions needing two of the five above",
+        "harnesses": 1,
         "note": null
       },
       {
@@ -165,10 +180,11 @@
     ]
   },
   "notes": [
-    "Baseline run of 2026-09-17 on x86_64 Linux: Kani 02abb5b0d, which is b07abe8a7 plus the team's two compatibility commits and three fixes (kani#4799, kani#4801, and a local workaround for kani#4794), on verify-rust-std sync-2026-08-21 at 9b38cdc4d84 with the team's local workarounds. Command: kani autoharness --list --std over the library with the unstable feature flags, without --bounded-arguments. 73 minutes, no errors.",
-    "The listing omits the 4,563 functions Kani skips as its own implementations; counting them, the run considered 45,796 functions.",
-    "A second run with --bounded-arguments and nothing else changed generated 28,077 harnesses and skipped 13,156: exactly the 1,102 functions listed under 'Requires --bounded-arguments' moved to generated, every other count stayed the same, and wall clock went from 73 to 88 minutes.",
-    "Measured 2026-09-21 on the same Kani base, rustc and library snapshot, both runs with --bounded-arguments: 28,077 harnesses before, 30,170 with every open team PR (+2,093, none lost). By PR: #4824 147, #4806 61, #4804 48, #4802 38, #4809 37, one function needing two of these, and 17 needing one of these plus #4780; #4780 alone 1,743. Of #4780's, about 769 take a Vec, String or similar heap-owning type that is derivable only through verify-rust-std's own NonNull Arbitrary impl (an integer cast to a pointer), and 524 take a file-descriptor type; those harnesses run on values that cannot be meaningful until that impl changes. #4782 and #4784 add impls in the kani crate, which the standard-library run does not link, so they show 0 here.",
+    "Run of 2026-10-05 on x86_64 Linux: Kani main 2ce7725a0 on verify-rust-std #687, which syncs the standard library to nightly-2026-09-25 (a4e1cd0c212). Command: kani autoharness --list --std over the library with the unstable feature flags, without --bounded-arguments.",
+    "Since kani#4864 (merged 2026-09-30), functions whose argument types hold a NonNull, such as Vec, String, VecDeque, the B-tree collections and LinkedList, are skipped on purpose: verify-rust-std's Arbitrary implementation builds that pointer from an arbitrary integer, so those harnesses ran on pointers to no allocation. On the 2026-09-30 run this moved 1,752 functions from generated to skipped.",
+    "Since kani#4880 (merged 2026-10-02), Kani reports a generic function whose instantiation search reaches its 256-attempt limit with its own message, shown here as \"Generic: search limit reached\"; earlier snapshots counted these under \"Generic: no candidate type\". \"Compile-time only\" first appears in this snapshot.",
+    "Earlier snapshots are in the repository history: 2026-09-30 (Kani 5c2234ee5 on a local sync of the library to nightly-2026-09-23, 27,074 generated and 14,397 skipped) and 2026-09-17 (Kani 02abb5b0d on verify-rust-std sync-2026-08-21, 26,975 generated and 14,258 skipped). On the 2026-09-17 setup, a run with --bounded-arguments generated 28,077, the baseline of the per-PR panel.",
+    "Measured 2026-09-21 on the 2026-09-17 snapshot's Kani base, rustc and library, both runs with --bounded-arguments: 28,077 harnesses before, 30,170 with every open team PR (+2,093, none lost). By PR: #4802 116 (measured on its own, 2026-09-24), #4824 69 (the functions #4802 alone does not generate), #4806 61, #4804 48, #4809 37, one function needing two of these, and 17 needing one of these plus #4780; #4780 alone 1,743. Of #4780's, about 769 take a Vec, String or similar heap-owning type that is derivable only through verify-rust-std's own NonNull Arbitrary impl (an integer cast to a pointer), and 524 take a file-descriptor type; those harnesses run on values that cannot be meaningful until that impl changes. #4782 and #4784 add impls in the kani crate, which the standard-library run does not link, so they show 0 here.",
     "The old-release counts are the Kani 0.67.0 release's own autoharness data, carried over from the 2026-09-16 snapshot; that snapshot (aarch64, Kani b07abe8a7, 25,165 generated of 38,942) is in the repository history.",
     "Semester progress should compare two runs produced at the same time with the same Kani and rustc: upstream baseline versus the version containing the team's changes."
   ]
