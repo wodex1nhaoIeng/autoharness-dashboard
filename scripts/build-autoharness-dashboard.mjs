@@ -117,6 +117,8 @@ const output = {
   }),
   // By pull request: harnesses each PR adds in the measured run, straight from the snapshot.
   contributions: snapshot.contributions ?? null,
+  // Verdicts of a whole-library verification run, straight from the snapshot.
+  verification: snapshot.verification ?? null,
   notes: snapshot.notes,
 };
 

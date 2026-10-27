@@ -1,108 +1,108 @@
 {
-  "generatedAt": "2026-10-05",
+  "generatedAt": "2026-10-27",
   "meta": {
     "title": "Rust standard library autoharness baseline",
-    "kaniCommit": "2ce7725a0",
+    "kaniCommit": "cd355b0bc",
     "kaniVersion": "0.68.0",
-    "verifyRustStdBranch": "verify-rust-std #687 (the library synced to nightly-2026-09-25, a4e1cd0c212)",
+    "verifyRustStdBranch": "verify-rust-std #737 (the library synced to nightly-2026-10-22, b3d9538f971)",
     "target": "x86_64-unknown-linux-gnu"
   },
   "summary": {
-    "automaticHarnesses": 27119,
-    "skipped": 14357,
-    "candidateFunctions": 41476,
-    "coverage": 0.6538480084868358
+    "automaticHarnesses": 27191,
+    "skipped": 14491,
+    "candidateFunctions": 41682,
+    "coverage": 0.6523439374310254
   },
   "crates": [
     {
       "name": "core",
-      "selected": 19760,
-      "skipped": 5598,
-      "total": 25358,
-      "coverage": 0.7792412650839972
+      "selected": 19726,
+      "skipped": 5607,
+      "total": 25333,
+      "coverage": 0.778668140370268
     },
     {
       "name": "alloc",
-      "selected": 565,
-      "skipped": 2413,
-      "total": 2978,
-      "coverage": 0.18972464741437206
+      "selected": 568,
+      "skipped": 2428,
+      "total": 2996,
+      "coverage": 0.18958611481975968
     },
     {
       "name": "std",
-      "selected": 1704,
-      "skipped": 2097,
-      "total": 3801,
-      "coverage": 0.4483030781373323
+      "selected": 1733,
+      "skipped": 2171,
+      "total": 3904,
+      "coverage": 0.44390368852459017
     },
     {
       "name": "dependencies",
-      "selected": 5090,
-      "skipped": 4249,
-      "total": 9339,
-      "coverage": 0.5450262340721704
+      "selected": 5164,
+      "skipped": 4285,
+      "total": 9449,
+      "coverage": 0.5465128585035454
     }
   ],
   "skipReasons": [
     {
       "reason": "Missing Arbitrary",
-      "count": 6625,
-      "share": 0.46144737758584664
+      "count": 6806,
+      "share": 0.46967083017045064
     },
     {
       "reason": "Generic: no candidate type",
-      "count": 3741,
-      "share": 0.2605697569130041
+      "count": 3696,
+      "share": 0.25505486163825825
     },
     {
       "reason": "Non-usize const generic",
       "count": 1581,
-      "share": 0.11012049871142997
+      "share": 0.10910220136636534
     },
     {
       "reason": "Requires bounded arguments",
       "count": 1379,
-      "share": 0.09605070697220867
+      "share": 0.09516251466427438
     },
     {
       "reason": "Generic: search limit reached",
-      "count": 687,
-      "share": 0.04785122240022289
+      "count": 680,
+      "share": 0.046925678007038854
     },
     {
       "reason": "No function body",
       "count": 178,
-      "share": 0.012398133314759351
+      "share": 0.012283486301842523
     },
     {
       "reason": "Const block on a const generic",
-      "count": 118,
-      "share": 0.008218987253604513
+      "count": 122,
+      "share": 0.008419018701262852
     },
     {
       "reason": "Compile-time only",
-      "count": 48,
-      "share": 0.00334331684892387
+      "count": 49,
+      "share": 0.0033814091505072114
     }
   ],
   "legacyComparison": [
     {
       "name": "core",
       "previous": 12834,
-      "current": 19760,
-      "change": 0.5396602773881876
+      "current": 19726,
+      "change": 0.537011064360293
     },
     {
       "name": "alloc",
       "previous": 138,
-      "current": 565,
-      "change": 3.0942028985507246
+      "current": 568,
+      "change": 3.115942028985507
     },
     {
       "name": "std",
       "previous": 1259,
-      "current": 1704,
-      "change": 0.3534551231135823
+      "current": 1733,
+      "change": 0.37648927720413017
     }
   ],
   "improvementComparison": [
@@ -179,11 +179,36 @@
       }
     ]
   },
+  "verification": {
+    "runAt": "2026-10-27",
+    "label": "False timeouts corrected",
+    "setup": "x86_64 Linux, 16 jobs, a development build of Kani on cd355b0bc, verify-rust-std #737",
+    "rows": [
+      {
+        "kind": "Automatic harnesses",
+        "verified": 15560,
+        "failedChecks": 10120,
+        "timedOut": 979,
+        "cbmcError": 54,
+        "outOfMemory": 13,
+        "total": 26726
+      },
+      {
+        "kind": "Hand-written harnesses",
+        "verified": 1734,
+        "failedChecks": 0,
+        "timedOut": 7,
+        "cbmcError": 0,
+        "outOfMemory": 0,
+        "total": 1741
+      }
+    ]
+  },
   "notes": [
-    "Run of 2026-10-05 on x86_64 Linux: Kani main 2ce7725a0 on verify-rust-std #687, which syncs the standard library to nightly-2026-09-25 (a4e1cd0c212). Command: kani autoharness --list --std over the library with the unstable feature flags, without --bounded-arguments.",
+    "Run of 2026-10-27 on x86_64 Linux: Kani main cd355b0bc on verify-rust-std #737, which syncs the standard library to nightly-2026-10-22 (b3d9538f971). Command: kani autoharness --list --std over the library with the unstable feature flags, without --bounded-arguments.",
     "Since kani#4864 (merged 2026-09-30), functions whose argument types hold a NonNull, such as Vec, String, VecDeque, the B-tree collections and LinkedList, are skipped on purpose: verify-rust-std's Arbitrary implementation builds that pointer from an arbitrary integer, so those harnesses ran on pointers to no allocation. On the 2026-09-30 run this moved 1,752 functions from generated to skipped.",
-    "Since kani#4880 (merged 2026-10-02), Kani reports a generic function whose instantiation search reaches its 256-attempt limit with its own message, shown here as \"Generic: search limit reached\"; earlier snapshots counted these under \"Generic: no candidate type\". \"Compile-time only\" first appears in this snapshot.",
-    "Earlier snapshots are in the repository history: 2026-09-30 (Kani 5c2234ee5 on a local sync of the library to nightly-2026-09-23, 27,074 generated and 14,397 skipped) and 2026-09-17 (Kani 02abb5b0d on verify-rust-std sync-2026-08-21, 26,975 generated and 14,258 skipped). On the 2026-09-17 setup, a run with --bounded-arguments generated 28,077, the baseline of the per-PR panel.",
+    "Since kani#4880 (merged 2026-10-02), Kani reports a generic function whose instantiation search reaches its 256-attempt limit with its own message, shown here as \"Generic: search limit reached\"; earlier snapshots counted these under \"Generic: no candidate type\".",
+    "Earlier snapshots are in the repository history: 2026-10-05 (Kani 2ce7725a0 on verify-rust-std #687, the library synced to nightly-2026-09-25, 27,119 generated and 14,357 skipped), 2026-09-30 (Kani 5c2234ee5 on a local sync of the library to nightly-2026-09-23, 27,074 generated and 14,397 skipped) and 2026-09-17 (Kani 02abb5b0d on verify-rust-std sync-2026-08-21, 26,975 generated and 14,258 skipped). On the 2026-09-17 setup, a run with --bounded-arguments generated 28,077, the baseline of the per-PR panel.",
     "Measured 2026-09-21 on the 2026-09-17 snapshot's Kani base, rustc and library, both runs with --bounded-arguments: 28,077 harnesses before, 30,170 with every open team PR (+2,093, none lost). By PR: #4802 116 (measured on its own, 2026-09-24), #4824 69 (the functions #4802 alone does not generate), #4806 61, #4804 48, #4809 37, one function needing two of these, and 17 needing one of these plus #4780; #4780 alone 1,743. Of #4780's, about 769 take a Vec, String or similar heap-owning type that is derivable only through verify-rust-std's own NonNull Arbitrary impl (an integer cast to a pointer), and 524 take a file-descriptor type; those harnesses run on values that cannot be meaningful until that impl changes. #4782 and #4784 add impls in the kani crate, which the standard-library run does not link, so they show 0 here.",
     "The old-release counts are the Kani 0.67.0 release's own autoharness data, carried over from the 2026-09-16 snapshot; that snapshot (aarch64, Kani b07abe8a7, 25,165 generated of 38,942) is in the repository history.",
     "Semester progress should compare two runs produced at the same time with the same Kani and rustc: upstream baseline versus the version containing the team's changes."

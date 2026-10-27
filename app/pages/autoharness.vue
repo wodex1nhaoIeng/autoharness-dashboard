@@ -2,6 +2,7 @@
 type CrateDatum = { name: string; selected: number; skipped: number; total: number; coverage: number };
 type SkipReason = { reason: string; count: number; share: number };
 type Comparison = { name: string; previous: number | null; current: number | null; change: number | null };
+type VerdictRow = { kind: string; verified: number; failedChecks: number; timedOut: number; cbmcError: number; outOfMemory: number; total: number };
 type DashboardData = {
   generatedAt: string;
   meta: { title: string; kaniCommit: string; kaniVersion: string; verifyRustStdBranch: string; target: string };
@@ -11,6 +12,7 @@ type DashboardData = {
   legacyComparison: Comparison[];
   improvementComparison: Comparison[];
   contributions: { measuredAt: string; total: number; rows: { pr: number | null; title: string; harnesses: number; note: string | null }[] } | null;
+  verification: { runAt: string; label: string; setup: string; rows: VerdictRow[] } | null;
   notes: string[];
 };
 
@@ -84,6 +86,26 @@ const delta = (value: number | null) => (value === null ? "pending" : signedPct(
             <div class="crate-values"><span>{{ nf.format(crate.selected) }}</span><span>{{ nf.format(crate.skipped) }}</span></div>
           </div>
         </div>
+      </section>
+
+      <section v-if="data.verification" class="panel verification-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">Verification · {{ data.verification.runAt }}</p><h2>Verdicts of the harnesses</h2></div>
+          <div class="legend"><span class="verdict-tag">{{ data.verification.label }}</span></div>
+        </div>
+        <div class="verdict-row verdict-head">
+          <span /><span>Verified</span><span>Failed checks</span><span>Timed out</span><span>CBMC error</span><span>Out of memory</span><span>Total</span>
+        </div>
+        <div v-for="row in data.verification.rows" :key="row.kind" class="verdict-row">
+          <strong>{{ row.kind }}</strong>
+          <span class="verified">{{ nf.format(row.verified) }}<small>{{ pct(row.verified / row.total) }}</small></span>
+          <span>{{ nf.format(row.failedChecks) }}</span>
+          <span>{{ nf.format(row.timedOut) }}</span>
+          <span>{{ nf.format(row.cbmcError) }}</span>
+          <span>{{ nf.format(row.outOfMemory) }}</span>
+          <b>{{ nf.format(row.total) }}</b>
+        </div>
+        <p class="caveat">Each harness run to a verdict: {{ data.verification.setup }}. {{ data.verification.label }}: a timeout here means the harness needs more than about a minute of work on an unloaded machine; harnesses that timed out only because the machine was busy were run to their verdict. The run leaves out the generated precondition_check functions, so its total differs from the listing. CBMC error: CBMC stopped with an error before a verdict.</p>
       </section>
 
       <div class="two-column">
@@ -188,10 +210,14 @@ h2 { margin: 0; font-family: Georgia, serif; font-size: 26px; font-weight: 500; 
 .comparison-stack { display: grid; gap: 20px; align-content: start; }.two-column .comparison-stack .panel { margin: 0; }
 .caveat { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
 .pr-panel { margin-top: 0; }.pr-row { display: grid; grid-template-columns: 72px 1fr 72px; align-items: baseline; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 13px; }.pr-row strong a { color: var(--green); text-decoration: none; }.pr-row small { color: var(--muted); }.pr-row b { text-align: right; font-variant-numeric: tabular-nums; }
+.verdict-tag { padding: 4px 10px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-weight: 700; }
+.verdict-row { display: grid; grid-template-columns: 1.4fr repeat(6, minmax(72px, 1fr)); align-items: baseline; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; font-variant-numeric: tabular-nums; }.verdict-row > span, .verdict-row > b { text-align: right; }
+.verdict-head { padding-top: 0; color: var(--muted); font-size: 12px; }
+.verdict-row .verified { color: var(--green); font-weight: 700; }.verdict-row .verified small { margin-left: 6px; color: var(--muted); font-weight: 500; }
 .method { max-width: 1180px; margin: 34px auto 0; display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; padding: 30px 0; border-top: 1px solid var(--line); }.method ol { margin: 0; padding-left: 22px; color: var(--muted); line-height: 1.7; list-style: decimal; }.method li { padding-left: 8px; margin-bottom: 8px; }
 .error-state { max-width: 760px; margin: 80px auto; color: #b42318; }
 @media (max-width: 900px) { .hero { align-items: flex-start; flex-direction: column; }.run-meta { align-items: flex-start; }.metrics { grid-template-columns: repeat(2, 1fr); }.two-column { grid-template-columns: 1fr; }.method { grid-template-columns: 1fr; gap: 22px; } }
-@media (max-width: 620px) { .autoharness-page { padding: 28px 14px 48px; }.metrics { grid-template-columns: 1fr; }.metric { min-height: 124px; }.crate-row { grid-template-columns: 1fr; gap: 7px; }.crate-values { max-width: 180px; }.section-heading { align-items: flex-start; flex-direction: column; }.comparison-row { grid-template-columns: 1fr 52px 12px 52px 58px; }.panel { padding: 20px 16px; } }
+@media (max-width: 620px) { .autoharness-page { padding: 28px 14px 48px; }.metrics { grid-template-columns: 1fr; }.metric { min-height: 124px; }.crate-row { grid-template-columns: 1fr; gap: 7px; }.crate-values { max-width: 180px; }.section-heading { align-items: flex-start; flex-direction: column; }.comparison-row { grid-template-columns: 1fr 52px 12px 52px 58px; }.panel { padding: 20px 16px; }.verdict-head { display: none; }.verdict-row { grid-template-columns: 1fr 1fr; }.verdict-row > strong { grid-column: 1 / -1; }.verdict-row > span::before, .verdict-row > b::before { float: left; color: var(--muted); font-weight: 500; }.verdict-row > span:nth-of-type(1)::before { content: "Verified"; }.verdict-row > span:nth-of-type(2)::before { content: "Failed checks"; }.verdict-row > span:nth-of-type(3)::before { content: "Timed out"; }.verdict-row > span:nth-of-type(4)::before { content: "CBMC error"; }.verdict-row > span:nth-of-type(5)::before { content: "Out of memory"; }.verdict-row > b::before { content: "Total"; } }
 :global(.my-app-dark) .autoharness-page { --ink: #eef4ef; --muted: #a8b3ac; --paper: #111714; --surface: #18201c; --green: #4dd5a4; --green-soft: #263b32; --orange: #ff9b57; --line: #344039; }
 :global(.my-app-dark) .reason-track { background: #29332e; }
 </style>
