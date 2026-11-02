@@ -2,7 +2,7 @@
 import { num, verdictLabels } from "~/utils/data";
 useHead({ title: "Harnesses · Autoharness verification" });
 
-const { data, error, status } = await useData<{ date: string; harnesses: Harness[] }>("harnesses", "harnesses.json");
+const { data, error, status } = useData<{ date: string; harnesses: Harness[] }>("harnesses", "harnesses.json");
 
 const query = ref("");
 const crate = ref("all");
@@ -86,7 +86,7 @@ const time = (s: number | null) => (s === null ? "—" : s < 1 ? `${(s * 1000).t
             </tr>
           </thead>
           <tbody>
-            <tr v-for="h in shown" :key="h.function + h.crate">
+            <tr v-for="(h, i) in shown" :key="page * perPage + i">
               <td><span class="label" :class="h.verdict">{{ verdictLabels[h.verdict] }}</span></td>
               <td class="fn"><code>{{ h.function }}</code></td>
               <td class="hide-sm">{{ h.crate }}</td>
