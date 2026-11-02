@@ -1,0 +1,225 @@
+{
+  "date": "2026-10-27",
+  "note": null,
+  "summary": {
+    "harnesses": 26726,
+    "verified": 15560,
+    "failed": 10120,
+    "timedOut": 979,
+    "error": 67,
+    "notRun": 913,
+    "skipped": 14485
+  },
+  "crates": [
+    {
+      "name": "core",
+      "harnesses": 19124,
+      "verified": 9884,
+      "failed": 8865,
+      "timedOut": 367,
+      "error": 8
+    },
+    {
+      "name": "std",
+      "harnesses": 1733,
+      "verified": 1007,
+      "failed": 585,
+      "timedOut": 139,
+      "error": 2
+    },
+    {
+      "name": "compiler_builtins",
+      "harnesses": 1690,
+      "verified": 1352,
+      "failed": 211,
+      "timedOut": 122,
+      "error": 5
+    },
+    {
+      "name": "object",
+      "harnesses": 1002,
+      "verified": 951,
+      "failed": 6,
+      "timedOut": 45,
+      "error": 0
+    },
+    {
+      "name": "gimli",
+      "harnesses": 936,
+      "verified": 824,
+      "failed": 13,
+      "timedOut": 62,
+      "error": 37
+    },
+    {
+      "name": "libc",
+      "harnesses": 655,
+      "verified": 577,
+      "failed": 33,
+      "timedOut": 45,
+      "error": 0
+    },
+    {
+      "name": "alloc",
+      "harnesses": 571,
+      "verified": 438,
+      "failed": 110,
+      "timedOut": 23,
+      "error": 0
+    },
+    {
+      "name": "proc_macro",
+      "harnesses": 318,
+      "verified": 157,
+      "failed": 69,
+      "timedOut": 92,
+      "error": 0
+    },
+    {
+      "name": "memchr",
+      "harnesses": 263,
+      "verified": 144,
+      "failed": 38,
+      "timedOut": 81,
+      "error": 0
+    },
+    {
+      "name": "kani_core",
+      "harnesses": 134,
+      "verified": 86,
+      "failed": 48,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "hashbrown",
+      "harnesses": 102,
+      "verified": 46,
+      "failed": 43,
+      "timedOut": 0,
+      "error": 13
+    },
+    {
+      "name": "std_detect",
+      "harnesses": 101,
+      "verified": 9,
+      "failed": 92,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "rustc_literal_escaper",
+      "harnesses": 35,
+      "verified": 32,
+      "failed": 1,
+      "timedOut": 2,
+      "error": 0
+    },
+    {
+      "name": "miniz_oxide",
+      "harnesses": 28,
+      "verified": 25,
+      "failed": 2,
+      "timedOut": 1,
+      "error": 0
+    },
+    {
+      "name": "adler2",
+      "harnesses": 11,
+      "verified": 8,
+      "failed": 3,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "rustc_demangle",
+      "harnesses": 11,
+      "verified": 11,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "addr2line",
+      "harnesses": 4,
+      "verified": 4,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "unwind",
+      "harnesses": 3,
+      "verified": 3,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "panic_abort",
+      "harnesses": 2,
+      "verified": 0,
+      "failed": 1,
+      "timedOut": 0,
+      "error": 1
+    },
+    {
+      "name": "panic_unwind",
+      "harnesses": 1,
+      "verified": 0,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 1
+    },
+    {
+      "name": "unknown",
+      "harnesses": 1,
+      "verified": 1,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 0
+    },
+    {
+      "name": "std_lib_analysis",
+      "harnesses": 1,
+      "verified": 1,
+      "failed": 0,
+      "timedOut": 0,
+      "error": 0
+    }
+  ],
+  "safety": [
+    {
+      "name": "safe",
+      "harnesses": 14982,
+      "verified": 10199,
+      "failed": 4286,
+      "timedOut": 485,
+      "error": 12
+    },
+    {
+      "name": "safe abstraction",
+      "harnesses": 1328,
+      "verified": 958,
+      "failed": 262,
+      "timedOut": 73,
+      "error": 35
+    },
+    {
+      "name": "unsafe",
+      "harnesses": 5573,
+      "verified": 915,
+      "failed": 4558,
+      "timedOut": 98,
+      "error": 2
+    },
+    {
+      "name": "unknown",
+      "harnesses": 4843,
+      "verified": 3488,
+      "failed": 1014,
+      "timedOut": 323,
+      "error": 18
+    }
+  ]
+}
