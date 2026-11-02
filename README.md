@@ -2,37 +2,34 @@
 
 Website: https://wodex1nhaoIeng.github.io/autoharness-dashboard/
 
-Standalone static dashboard for Rust standard-library autoharness generation.
-Includes the team's overview, searchable per-function inventory, baseline comparison,
-and harness contributions per PR as of Srivatsan Samraj's source commit `976c355`.
-Generated harnesses do not imply successful verification.
+Standalone static dashboard that tracks how many of Kani's automatically generated harnesses
+for the Rust standard library verify, fail or time out, run after run.
 
 ## Local use
 
 Requires Node.js 22 and npm. Run `npm ci`, then `npm run dev`.
 Run `npm run generate` to create the static site in `.output/public`.
-No Rust checkout, submodules, Kani installation or backend is needed to view the site.
 
 ## Data
 
-The browser reads `public/data/autoharness-dashboard.json` and
-`public/data/autoharness-functions.json`. They are copied unchanged from the latest
-team snapshot. The function inventory describes the captured baseline; the contribution
-panel describes a separate measured comparison. Source caveats remain in the data and UI.
-
-To import another run from the repository root:
+Each run is imported from the `results.json` that verify-rust-std's
+`scripts/kani-std-analysis/log_parser.py` writes (one record per harness):
 
 ```sh
-node scripts/build-autoharness-dashboard.mjs /path/to/run public/data/autoharness-dashboard.json
+node scripts/import-results.mjs /path/to/results.json 2026-10-27 --note "optional remark"
 ```
 
-The input folder must contain `snapshot.json`, the autoharness text listing named by
-`listFile`, and the Kani JSON named by `kaniListFile`. Snapshot metadata includes
-`generatedAt`, `expected.selected`, `expected.skipped`, `meta` (Kani commit,
-verify-rust-std branch, target), `legacyPrevious`, `improvement.baseline`,
-`improvement.afterChanges`, optional `contributions`, and `notes`.
-The importer validates listing totals and writes both public JSON files.
-Raw run files are not included in this repository.
+This writes, under `public/data/`:
+
+- `latest.json`: totals, and the same totals split by crate and by function safety
+- `harnesses.json`: one row per generated harness with its result, failed properties and time
+- `history/<date>.json`: that run's totals, kept for good
+- `history/index.json`: every saved run, rebuilt on each import, read by the chart
+
+Only automatically generated harnesses are counted. A harness is *verified* when the result
+starts with `SUCCESSFUL`, *timed out* when log_parser recorded time `TO`, *failed* when at least
+one property failed, and *error* otherwise (Kani or CBMC stopped before a verdict).
+Commit the changed files under `public/data/` to publish a run.
 
 ## History and provenance
 

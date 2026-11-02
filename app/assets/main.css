@@ -1,11 +1,57 @@
+/* Colors follow GitHub's Primer tokens so the dashboard sits next to GitHub without looking foreign. */
+:root {
+  color-scheme: light dark;
+  --fg: #1f2328; --fg-muted: #59636e; --bg: #ffffff; --bg-subtle: #f6f8fa; --border: #d1d9e0; --border-muted: #d1d9e0b3;
+  --accent: #0969da; --success: #1a7f37; --danger: #d1242f; --attention: #9a6700; --neutral: #818b98;
+  --success-soft: #dafbe1; --danger-soft: #ffebe9; --attention-soft: #fff8c5; --neutral-soft: #818b981f;
+  --header-bg: #f6f8fa;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #f0f6fc; --fg-muted: #9198a1; --bg: #0d1117; --bg-subtle: #151b23; --border: #3d444d; --border-muted: #3d444db3;
+    --accent: #4493f8; --success: #3fb950; --danger: #f85149; --attention: #d29922; --neutral: #9198a1;
+    --success-soft: #2ea04326; --danger-soft: #f851491a; --attention-soft: #bb800926; --neutral-soft: #656c7633;
+    --header-bg: #010409;
+  }
+}
+
 * { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; background: #f5f3ed; color: #17211d; }
-.site-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 18px; background: #fffdf8; border-bottom: 1px solid #dedbd2; }
-.site-nav > div { display: flex; gap: 8px; }
-.site-nav a { padding: 10px 14px; color: inherit; text-decoration: none; border-radius: 6px; }
-.site-nav a.router-link-active { background: #087f5b; color: white; }
-.my-app-dark body { background: #111714; color: #eef4ef; }
-.my-app-dark .site-nav { background: #18201c; border-color: #344039; }
-button, input, select { font: inherit; }
-a:focus-visible, button:focus-visible { outline: 3px solid #e87528; outline-offset: 3px; }
-@media (max-width: 450px) { .site-nav { padding: 6px; }.site-nav a { padding: 10px; } }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font-size: 14px; line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.page { max-width: 1280px; margin: 0 auto; padding: 24px 16px 48px; }
+@media (min-width: 768px) { .page { padding: 24px 32px 48px; } }
+.page-title { margin: 0; font-size: 20px; font-weight: 600; }
+.page-meta { margin: 2px 0 20px; color: var(--fg-muted); }
+.state { padding: 32px 0; color: var(--fg-muted); }
+
+/* Box: GitHub's bordered panel with a subtle header row. */
+.box { border: 1px solid var(--border); border-radius: 6px; background: var(--bg); margin-bottom: 16px; overflow: hidden; }
+.box-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: var(--bg-subtle); border-bottom: 1px solid var(--border); }
+.box-title { margin: 0; font-size: 14px; font-weight: 600; }
+.box-body { padding: 16px; }
+
+.table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.table th, .table td { padding: 8px 16px; border-top: 1px solid var(--border-muted); text-align: right; white-space: nowrap; }
+.table thead th { border-top: 0; color: var(--fg-muted); font-size: 12px; font-weight: 600; }
+.table th:first-child, .table td:first-child { text-align: left; }
+.table tbody tr:hover { background: var(--bg-subtle); }
+
+/* Label: GitHub's rounded outline tag, one per verdict. */
+.label { display: inline-block; padding: 0 7px; border: 1px solid transparent; border-radius: 2em; font-size: 12px; font-weight: 500; line-height: 18px; white-space: nowrap; }
+.label.verified { color: var(--success); border-color: var(--success); background: var(--success-soft); }
+.label.failed { color: var(--danger); border-color: var(--danger); background: var(--danger-soft); }
+.label.timedOut { color: var(--attention); border-color: var(--attention); background: var(--attention-soft); }
+.label.error { color: var(--fg-muted); border-color: var(--border); background: var(--neutral-soft); }
+
+.btn { padding: 3px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-subtle); font-size: 12px; font-weight: 500; line-height: 20px; cursor: pointer; }
+.btn:hover:not(:disabled) { background: var(--border-muted); }
+.btn:disabled { color: var(--fg-muted); cursor: default; }
+.form-control { padding: 5px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); line-height: 20px; }
