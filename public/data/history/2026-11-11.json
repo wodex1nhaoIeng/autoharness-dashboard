@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-11",
+  "note": null,
+  "summary": {
+    "harnesses": 26726,
+    "verified": 15529,
+    "failed": 10117,
+    "timedOut": 1012,
+    "error": 68,
+    "notRun": 913,
+    "skipped": 14489
+  }
+}

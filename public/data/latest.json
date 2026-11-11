@@ -1,30 +1,30 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-11-11",
   "note": null,
   "summary": {
     "harnesses": 26726,
-    "verified": 15560,
-    "failed": 10120,
-    "timedOut": 979,
-    "error": 67,
+    "verified": 15529,
+    "failed": 10117,
+    "timedOut": 1012,
+    "error": 68,
     "notRun": 913,
-    "skipped": 14485
+    "skipped": 14489
   },
   "crates": [
     {
       "name": "core",
       "harnesses": 19124,
-      "verified": 9884,
-      "failed": 8865,
-      "timedOut": 367,
-      "error": 8
+      "verified": 9849,
+      "failed": 8889,
+      "timedOut": 377,
+      "error": 9
     },
     {
       "name": "std",
       "harnesses": 1733,
-      "verified": 1007,
+      "verified": 1006,
       "failed": 585,
-      "timedOut": 139,
+      "timedOut": 140,
       "error": 2
     },
     {
@@ -38,17 +38,17 @@
     {
       "name": "object",
       "harnesses": 1002,
-      "verified": 951,
-      "failed": 6,
-      "timedOut": 45,
+      "verified": 942,
+      "failed": 4,
+      "timedOut": 56,
       "error": 0
     },
     {
       "name": "gimli",
       "harnesses": 936,
-      "verified": 824,
+      "verified": 820,
       "failed": 13,
-      "timedOut": 62,
+      "timedOut": 66,
       "error": 37
     },
     {
@@ -70,9 +70,9 @@
     {
       "name": "proc_macro",
       "harnesses": 318,
-      "verified": 157,
+      "verified": 155,
       "failed": 69,
-      "timedOut": 92,
+      "timedOut": 94,
       "error": 0
     },
     {
@@ -86,9 +86,9 @@
     {
       "name": "kani_core",
       "harnesses": 134,
-      "verified": 86,
-      "failed": 48,
-      "timedOut": 0,
+      "verified": 110,
+      "failed": 23,
+      "timedOut": 1,
       "error": 0
     },
     {
@@ -110,17 +110,17 @@
     {
       "name": "rustc_literal_escaper",
       "harnesses": 35,
-      "verified": 32,
+      "verified": 30,
       "failed": 1,
-      "timedOut": 2,
+      "timedOut": 4,
       "error": 0
     },
     {
       "name": "miniz_oxide",
       "harnesses": 28,
-      "verified": 25,
+      "verified": 24,
       "failed": 2,
-      "timedOut": 1,
+      "timedOut": 2,
       "error": 0
     },
     {
@@ -150,9 +150,9 @@
     {
       "name": "unwind",
       "harnesses": 3,
-      "verified": 3,
+      "verified": 2,
       "failed": 0,
-      "timedOut": 0,
+      "timedOut": 1,
       "error": 0
     },
     {
@@ -192,16 +192,16 @@
     {
       "name": "safe",
       "harnesses": 14982,
-      "verified": 10199,
-      "failed": 4286,
-      "timedOut": 485,
-      "error": 12
+      "verified": 10156,
+      "failed": 4296,
+      "timedOut": 519,
+      "error": 11
     },
     {
       "name": "safe abstraction",
       "harnesses": 1328,
-      "verified": 958,
-      "failed": 262,
+      "verified": 946,
+      "failed": 274,
       "timedOut": 73,
       "error": 35
     },
@@ -216,10 +216,10 @@
     {
       "name": "unknown",
       "harnesses": 4843,
-      "verified": 3488,
-      "failed": 1014,
-      "timedOut": 323,
-      "error": 18
+      "verified": 3512,
+      "failed": 989,
+      "timedOut": 322,
+      "error": 20
     }
   ]
 }
