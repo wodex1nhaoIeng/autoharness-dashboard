@@ -1,39 +1,39 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-16",
   "note": null,
   "summary": {
     "harnesses": 26726,
-    "verified": 15529,
-    "failed": 10117,
-    "timedOut": 1012,
-    "error": 68,
-    "notRun": 913,
+    "verified": 15535,
+    "failed": 10114,
+    "timedOut": 974,
+    "error": 103,
+    "notRun": 0,
     "skipped": 14489
   },
   "crates": [
     {
       "name": "core",
       "harnesses": 19124,
-      "verified": 9849,
-      "failed": 8889,
-      "timedOut": 377,
-      "error": 9
+      "verified": 9855,
+      "failed": 8888,
+      "timedOut": 353,
+      "error": 28
     },
     {
       "name": "std",
       "harnesses": 1733,
       "verified": 1006,
       "failed": 585,
-      "timedOut": 140,
-      "error": 2
+      "timedOut": 139,
+      "error": 3
     },
     {
       "name": "compiler_builtins",
       "harnesses": 1690,
       "verified": 1352,
-      "failed": 211,
-      "timedOut": 122,
-      "error": 5
+      "failed": 209,
+      "timedOut": 117,
+      "error": 12
     },
     {
       "name": "object",
@@ -72,16 +72,16 @@
       "harnesses": 318,
       "verified": 155,
       "failed": 69,
-      "timedOut": 94,
-      "error": 0
+      "timedOut": 89,
+      "error": 5
     },
     {
       "name": "memchr",
       "harnesses": 263,
       "verified": 144,
       "failed": 38,
-      "timedOut": 81,
-      "error": 0
+      "timedOut": 79,
+      "error": 2
     },
     {
       "name": "kani_core",
@@ -120,8 +120,8 @@
       "harnesses": 28,
       "verified": 24,
       "failed": 2,
-      "timedOut": 2,
-      "error": 0
+      "timedOut": 1,
+      "error": 1
     },
     {
       "name": "adler2",
@@ -193,33 +193,33 @@
       "name": "safe",
       "harnesses": 14982,
       "verified": 10156,
-      "failed": 4296,
-      "timedOut": 519,
-      "error": 11
+      "failed": 4294,
+      "timedOut": 500,
+      "error": 32
     },
     {
       "name": "safe abstraction",
       "harnesses": 1328,
       "verified": 946,
       "failed": 274,
-      "timedOut": 73,
-      "error": 35
+      "timedOut": 63,
+      "error": 45
     },
     {
       "name": "unsafe",
       "harnesses": 5573,
-      "verified": 915,
+      "verified": 921,
       "failed": 4558,
-      "timedOut": 98,
-      "error": 2
+      "timedOut": 90,
+      "error": 4
     },
     {
       "name": "unknown",
       "harnesses": 4843,
       "verified": 3512,
-      "failed": 989,
-      "timedOut": 322,
-      "error": 20
+      "failed": 988,
+      "timedOut": 321,
+      "error": 22
     }
   ]
 }
