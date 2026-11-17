@@ -55,6 +55,10 @@ const byCrate = new Map();
 const bySafety = new Map();
 const harnesses = [];
 
+// log_parser writes a second, verdict-less line for some harnesses. Such a line is a duplicate, not a harness
+// that did not run, when the same harness also has a verdict.
+const withVerdict = new Set(records.filter((r) => r.is_autoharness && r.result !== null).map((r) => r.harness));
+
 for (const r of records) {
   if (!r.is_autoharness) continue;
   const generated = r.autoharness_result === "ok" || r.result !== null;
@@ -66,7 +70,7 @@ for (const r of records) {
   const v = verdict(r);
   // Generated but absent from the verification log: counted on its own, outside the totals.
   if (v === "notRun") {
-    summary.notRun += 1;
+    if (!withVerdict.has(r.harness)) summary.notRun += 1;
     continue;
   }
   const crate = first(r.crate) ?? crateFromPath(r.file_name) ?? "unknown";
